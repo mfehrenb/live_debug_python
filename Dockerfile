@@ -15,7 +15,7 @@ RUN pipenv install --deploy --system
 RUN mkdir /app
 WORKDIR /app
 COPY ./app .
-COPY ./setup.cfg  .
+COPY ./setup.cfg  /setup.cfg
 
 RUN useradd --no-create-home restricted_user
 RUN chown restricted_user:restricted_user /app
