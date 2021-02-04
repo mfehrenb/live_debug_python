@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "593e825aa87fe9c1fd475bea73e9130fe771de4e1dd45628c1851eb26abec803"
+            "sha256": "831ad70b8cbda573cca95835b29542012f89c22ff18fa01e2e2d2770c0920ab0"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -56,6 +56,13 @@
                 "sha256:bc3af051d7d14b2ee5ef9969666def0cd1a000e121eaea580d4a313df4b37f32"
             ],
             "version": "==1.1.1"
+        },
+        "isort": {
+            "hashes": [
+                "sha256:c729845434366216d320e936b8ad6f9d681aab72dc7cbc2d51bedc3582f3ad1e",
+                "sha256:fff4f0c04e1825522ce6949973e83110a6e907750cd92d128b0d14aaaadbffdc"
+            ],
+            "version": "==5.7.0"
         },
         "mccabe": {
             "hashes": [
@@ -112,6 +119,13 @@
                 "sha256:b574b57423e818210672e07ca1fa90aaf194a4f63f3ab909a2c67ebb22913839"
             ],
             "version": "==6.2.2"
+        },
+        "pytest-django": {
+            "hashes": [
+                "sha256:10e384e6b8912ded92db64c58be8139d9ae23fb8361e5fc139d8e4f8fc601bc2",
+                "sha256:26f02c16d36fd4c8672390deebe3413678d89f30720c16efb8b2a6bf63b9041f"
+            ],
+            "version": "==4.1.0"
         },
         "pytz": {
             "hashes": [
