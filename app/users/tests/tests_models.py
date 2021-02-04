@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 
 import pytest
-from pytest_django.plugin import django_db_blocker
 
 
 class TestsModels:
@@ -26,7 +25,6 @@ class TestsModels:
     def test_error_email_is_none(self):
         with pytest.raises(ValueError):
             get_user_model().objects.create_user(None, self.mock_password)
-
 
     @pytest.mark.django_db
     def test_success_create_superuser(self):
