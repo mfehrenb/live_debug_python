@@ -27,3 +27,10 @@
     ```bash
     $ make build
     ```
+
+## Running tests
+To run the tests within a container please do the following:
+  ```bash
+  $ cd git/live_debug_python
+  $ make test
+  ```
