@@ -6,3 +6,9 @@ test:
 
 migrations:
 		docker-compose run app sh -c "python3 manage.py makemigrations"
+
+local:
+		docker-compose up
+
+superuser:
+		docker-compose run app sh -c "python3 manage.py createsuperuser"

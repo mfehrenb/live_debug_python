@@ -34,3 +34,12 @@ To run the tests within a container please do the following:
   $ cd git/live_debug_python
   $ make test
   ```
+
+## Accessing the Admin Page
+  ```bash
+  $ cd git/live_debug_python
+  $ make superuser
+  $ make local
+  ```
+  Load the admin page using http://localhost:8000/admin/ and log in with the superuser
+
