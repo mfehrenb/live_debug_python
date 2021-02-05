@@ -43,3 +43,8 @@ To run the tests within a container please do the following:
   ```
   Load the admin page using http://localhost:8000/admin/ and log in with the superuser
 
+## Creating a user and token in the browser
+1. In chrome browse to http://localhost:8000/api/v1/users/create/
+2. Enter the information for the user.
+3. In the browser navigate to http://localhost:8000/api/v1/users/token/
+4. Enter the user information and save the token.
