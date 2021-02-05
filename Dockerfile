@@ -6,6 +6,7 @@ RUN apt update -y
 RUN apt install python3.8 -y
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
 RUN apt install python3-pip -y
+RUN apt install postgresql-client -y
 RUN pip3 install pipenv
 
 COPY ./Pipfile /Pipfile
