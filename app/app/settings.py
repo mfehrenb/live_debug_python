@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app',
     'users'
 ]
 
@@ -81,7 +82,7 @@ DATABASES = {
         'HOST': environ.get('DB_HOST'),
         'NAME': environ.get('DB_NAME'),
         'USER': environ.get('DB_USER'),
-        'PASSWORD': environ.get('DB_PASSWORD'),
+        'PASSWORD': environ.get('DB_PASS'),
     }
 }
 
