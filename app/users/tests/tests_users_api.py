@@ -4,9 +4,11 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 import pytest
+from pytest_django.plugin import django_db_blocker
 from rest_framework import status
 
 CREATE_USER_URL = reverse('users:create')
+TOKEN_URL = reverse('users:token')
 
 
 class TestsUsersApi:
@@ -22,7 +24,7 @@ class TestsUsersApi:
         assert 'password' not in json_content.keys()
 
     @pytest.mark.django_db
-    def test_success_user_exists(self, client):
+    def test_error_user_exists(self, client):
         response = client.post(CREATE_USER_URL, self.user_body)
         assert response.status_code == status.HTTP_201_CREATED
         response = client.post(CREATE_USER_URL, self.user_body)
@@ -35,3 +37,34 @@ class TestsUsersApi:
         assert response.status_code == status.HTTP_400_BAD_REQUEST
         user_exists = get_user_model().objects.filter(email=body['email']).exists()
         assert user_exists is False
+
+    @pytest.mark.django_db
+    def test_success_user_token_creation(self, client):
+        response = client.post(CREATE_USER_URL, self.user_body)
+        assert response.status_code == status.HTTP_201_CREATED
+        response = client.post(TOKEN_URL, self.user_body)
+        assert response.status_code == status.HTTP_200_OK
+        assert json.loads(response.content)['token'] is not None
+
+    @pytest.mark.django_db
+    def test_error_user_token_creation_bad_creds(self, client):
+        response = client.post(CREATE_USER_URL, self.user_body)
+        assert response.status_code == status.HTTP_201_CREATED
+        body = {'email': 'test@opentext.com', 'password': 'wrong_pass'}
+        response = client.post(CREATE_USER_URL, body)
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert 'token' not in json.loads(response.content).keys()
+
+    @pytest.mark.django_db
+    def test_error_user_token_creation_user_not_exists(self, client):
+        body = {'email': 'test@opentext.com', 'password': 'wrong_pass'}
+        response = client.post(CREATE_USER_URL, body)
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert 'token' not in json.loads(response.content).keys()
+
+    @pytest.mark.django_db
+    def test_error_user_token_creation_missing_password(self, client):
+        body = {'email': 'test@opentext.com', 'password': 'wrong_pass'}
+        response = client.post(CREATE_USER_URL, body)
+        assert response.status_code == status.HTTP_400_BAD_REQUEST
+        assert 'token' not in json.loads(response.content).keys()
