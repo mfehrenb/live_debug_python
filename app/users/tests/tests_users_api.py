@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 
 import pytest
-from pytest_django.plugin import django_db_blocker
 from rest_framework import status
 
 CREATE_USER_URL = reverse('users:create')
