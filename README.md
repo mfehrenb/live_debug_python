@@ -48,3 +48,11 @@ To run the tests within a container please do the following:
 2. Enter the information for the user.
 3. In the browser navigate to http://localhost:8000/api/v1/users/token/
 4. Enter the user information and save the token.
+
+## Debugging the server
+1. Start by enabling a django launch.json file: https://code.visualstudio.com/docs/python/tutorial-django
+2. Run the db only
+    ```bash
+    $ make local_db_only
+    ```
+3. In VSCode click on the debug menu and select RUN

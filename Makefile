@@ -10,5 +10,8 @@ migrations:
 local:
 		docker-compose up
 
+local_db_only:
+		docker-compose up db
+
 superuser:
 		docker-compose run app sh -c "python3 manage.py createsuperuser"

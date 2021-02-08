@@ -22,6 +22,8 @@ services:
 
   db:
     image: postgres:13-alpine
+    ports:
+      - "6543:5432"
     environment:
       - POSTGRES_DB=app
       - POSTGRES_USER=postgres
