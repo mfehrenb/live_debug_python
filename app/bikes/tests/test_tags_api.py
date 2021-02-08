@@ -22,8 +22,8 @@ class TestsPrivateTagAPI:
     @pytest.mark.django_db
     def test_success_retrieve_tags(self, client, create_default_user):
         user = create_default_user()
-        client.force_login(user)
-
+        response = client.login(email='test@opentext.com', password='')
+        print(response)
         Tag.objects.create(user=user, name='Santa Cruz')
         Tag.objects.create(user=user, name='Norco')
 
